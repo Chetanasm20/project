@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -89,7 +91,10 @@ public class ItemBeanController
 	{
 		return itembeanservice.getItemByItemName(itemName);
 	}
-
-
 	
+	/*when request comes for items/sort/name all the items get sorted based on their name*/
+	@RequestMapping(method = RequestMethod.GET, value="/sort/name")
+	public List<ItemBean> sortbyname(){
+		return itembeanservice.getAllItemsSort();
+	}
 }
