@@ -24,6 +24,7 @@ public class ItemBeanController
 		return itembeanservice.getAllItems();
 	}
 	
+	//get items on user request
 	@GetMapping("/items/{request}")
 	public Optional<ItemBean> getOneItem(@PathVariable Object request)
 	{
@@ -31,43 +32,44 @@ public class ItemBeanController
 	}
 	
 
-	
+	//add a item
 	@PostMapping("/items")
 	public List<ItemBean> addItem(@RequestBody ItemBean item )
 	{
 		return itembeanservice.addItem(item);
 	}
 	
+	//update item
 	@PutMapping("/items")
 	public List<ItemBean> updateItem(@RequestBody ItemBean itembean)
 	{
 		return itembeanservice.updateItem(itembean);
 	}
 	
-	@DeleteMapping("/items")
-	public List<ItemBean>  deleteAll()
-	{
-		return itembeanservice.deleteAll();
-	}
 	
+	
+	//delete a item on user request(like all items or particular item)
 	@DeleteMapping("/items{request}")
 	public List<ItemBean> deleteById(@PathVariable int request)
 	{
 		return itembeanservice.deletebyId(request);
 	}
+	
+	//count the all items
 	@GetMapping("/count")
 	public int getcount()
 	{
 		return (int)itembeanservice.getEntintyCount();
 	}
 	
+	//get a all items of specified type
 	@GetMapping("/items/getByitemType/{type}")
 	public List<ItemBean> itemtype(@PathVariable String type)
 	{
 		return itembeanservice.getAllItemOfSameType(type);
 	}
 	
-	
+	//sort a specific type of Item on user request
 	@GetMapping("/items/sortAspecifictypeOfItemOnUserRequest/{request1}/{request2}")
 	public List<ItemBean> sortOnspecificItemType(@PathVariable Object request1,@PathVariable Object request2)
 	{
@@ -81,6 +83,7 @@ public class ItemBeanController
 		return itembeanservice.sorting(request);
 	}
 	
+	//get a item by its name
 	@GetMapping("/items/getitembyname/{itemName}")
 	public ItemBean getItemByName(@PathVariable String itemName)
 	{

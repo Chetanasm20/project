@@ -16,13 +16,15 @@ public class ItemBeanService
 	
 	@Autowired
 	private repository repository;
+	
+	//get all items
 	public List<ItemBean> getAllItems() 
 	{
 		
 		return repository.findAll();
 	}
 	
-	
+	//add a item
 	public List<ItemBean> addItem(ItemBean item) 
 	{
 		repository.save(item);
@@ -30,14 +32,14 @@ public class ItemBeanService
 		
 	}
 
-
+	//get a item of specified id
 	public Optional<ItemBean> getSpecificIdItem(Object request) 
 	{
 		
 		return repository.findById((Integer) request);
 	}
 
-
+	//update item on id
 	public List<ItemBean> updateItem(ItemBean itembean) 
 	{
 		
@@ -53,39 +55,34 @@ public class ItemBeanService
 		
 	}
 
-
+	//delete all items
 	public List<ItemBean> deleteAll() 
 	{
 		repository.deleteAll();
 		return repository.findAll();
 	}
 
-
+	//delete a item 
 	public List<ItemBean> deletebyId(int request) 
 	{
 		repository.deleteById(request);
 		return repository.findAll();
 	}
 
-
+	//sort by price
 	public void sortByPrice(int  request) 
 	{
 		repository.existsById(request);
 	}
 
-
-	public void sortATable() 
-	{
-			}
-
-
+	//get all items of specified type
 	public List<ItemBean> getAllItemOfSameType(String input) 
 	{
 		// TODO Auto-generated method stub
 		return repository.findByItemType(input);
 	}
 
-
+	//count the all items
 	public int getEntintyCount() 
 	{
 		// TODO Auto-generated method stub
