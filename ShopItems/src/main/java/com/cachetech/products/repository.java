@@ -18,8 +18,5 @@ public interface repository extends JpaRepository<ItemBean, Integer>
 	List<ItemBean> findByOrderByItemNameAsc();
 
 	List<ItemBean> findByOrderBySizeAsc();
-
-	
-	
 	
 }
