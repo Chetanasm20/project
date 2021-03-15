@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -139,7 +140,16 @@ public class ItemBeanService
 			return repository.findByOrderBySizeAsc();
 		}
 	}
-
+	
+	// add different way of sorting, this will reduce few lines 
+	//this method will sort items based on their itemname
+	public List<ItemBean> getAllItemsSort()
+    {
+	 Sort sortOrder = Sort.by("itemName"); 
+	 
+	 List<ItemBean> list = repository.findAll(sortOrder);
+	return list;
+    }
 
 	
 }
